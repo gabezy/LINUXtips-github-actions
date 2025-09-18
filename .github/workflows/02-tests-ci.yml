@@ -36,7 +36,7 @@ jobs:
       - name: "Rodar testes"
         run: |
           echo "Rodando testes..."
-          npm test
+          npm run tests
           echo "Testes executados com sucesso!!"
 
       - name: "Extrair porcentagem de cobertura" # Esse step será validado pelo desafio, não altere o nome. No final, ele deve gerar o output "coverage" com a porcentagem de cobertura.
