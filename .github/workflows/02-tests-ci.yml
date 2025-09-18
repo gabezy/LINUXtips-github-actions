@@ -20,10 +20,24 @@ jobs:
       - name: "Checkout do código"
         uses: actions/checkout@v4
 
-      # INSIRA AQUI A LÓGICA PARA RODAR OS TESTES E VERIFICAR A COBERTURA
-      ###
-      ###
-      ###
+      - name: "Setup Node.js"
+        id: setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: "Instalar dependências"
+        run: |
+          echo "Instalando dependências..."
+          npm ci
+          echo "Dependências instaladas com sucesso!"
+
+      - name: "Rodar testes"
+        run: |
+          echo "Rodando testes..."
+          npm test
+          echo "Testes executados com sucesso!"
 
       - name: "Extrair porcentagem de cobertura" # Esse step será validado pelo desafio, não altere o nome. No final, ele deve gerar o output "coverage" com a porcentagem de cobertura.
         id: coverage
