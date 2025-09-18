@@ -45,6 +45,12 @@ jobs:
           COVERAGE=$(npx nyc report --reporter=text-summary | grep -oP 'Statements\s*:\s*\K[0-9\.]+(?=%)' | head -1)
           echo "Coverage: $COVERAGE%"
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+      
+      - name: "Verificar se cobertura mínima foi atingida"
+        id: check-coverage
+        run: |
+          echo "${{ needs.tests-and-coverage.outputs.coverage }}"
+          
 
   generate-certificate: # DAQUI PARA BAIXO, NÃO ALTERAR
       name: "Desafio Nível 2 - Certificado"
