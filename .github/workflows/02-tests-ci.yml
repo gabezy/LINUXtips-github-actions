@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "Instalando dependências..."
           npm ci
-          echo "Dependências instaladas com sucesso!"
+          echo "Dependências instaladas com sucesso!!"
 
       - name: "Rodar testes"
         run: |
