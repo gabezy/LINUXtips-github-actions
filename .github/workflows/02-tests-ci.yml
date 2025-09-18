@@ -49,7 +49,7 @@ jobs:
       - name: "Verificar se cobertura mínima foi atingida"
         id: check-coverage
         run: |
-          echo "$COVERAGE"
+          echo "$COVERAGE%"
           
 
   generate-certificate: # DAQUI PARA BAIXO, NÃO ALTERAR
