@@ -31,12 +31,12 @@ jobs:
         run: |
           echo "Instalando dependências..."
           npm ci
-          echo "Dependências instaladas com sucesso!"
+          echo "Dependências instaladas com sucesso!!"
 
       - name: "Rodar testes"
         run: |
           echo "Rodando testes..."
-          npm test
+          npm run tests
           echo "Testes executados com sucesso!!"
 
       - name: "Extrair porcentagem de cobertura" # Esse step será validado pelo desafio, não altere o nome. No final, ele deve gerar o output "coverage" com a porcentagem de cobertura.
@@ -45,6 +45,12 @@ jobs:
           COVERAGE=$(npx nyc report --reporter=text-summary | grep -oP 'Statements\s*:\s*\K[0-9\.]+(?=%)' | head -1)
           echo "Coverage: $COVERAGE%"
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+      
+      - name: "Verificar se cobertura mínima foi atingida"
+        id: check-coverage
+        run: |
+          echo "$COVERAGE%"
+          
 
   generate-certificate: # DAQUI PARA BAIXO, NÃO ALTERAR
       name: "Desafio Nível 2 - Certificado"
